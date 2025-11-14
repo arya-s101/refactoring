@@ -11,9 +11,8 @@ public class StatementPrinter {
     private static Map<String, Play> plays;
     private Invoice invoice;
 
-    public StatementPrinter(Invoice invoice, Map<String, Play> plays) {
+    public StatementPrinter(Invoice invoice) {
         this.invoice = invoice;
-        this.plays = plays;
     }
 
     public Invoice getInvoice() {
@@ -83,7 +82,9 @@ public class StatementPrinter {
                 result += Constants.COMEDY_AMOUNT_PER_AUDIENCE * performance.getAudience();
                 break;
             default:
-                throw new RuntimeException(String.format("unknown type: %s", getPlay(performance).getType()));
+                final RuntimeException unknownTypeOfPlayException =
+                        new RuntimeException(String.format("unknown type: %s", getPlay(performance).getType()));
+                throw unknownTypeOfPlayException;
         }
         return result;
     }
