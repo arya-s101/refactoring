@@ -1,2 +1,3 @@
-d0f30e8 (HEAD -> main, origin/main, origin/HEAD) refactored code to fix CheckStyle issues
+61877ec (HEAD -> main) updated the log. Did Task 1.1 in the previous commit, and Task 1.2 in this commit.
+d0f30e8 (origin/main, origin/HEAD) refactored code to fix CheckStyle issues
 9dc910e Initial commit
