@@ -1,3 +1,5 @@
-61877ec (HEAD -> main) updated the log. Did Task 1.1 in the previous commit, and Task 1.2 in this commit.
+e4da034 (HEAD -> main) fixed SonarLint errors
+03cb1eb updated the log, and finished Task 2.1
+61877ec updated the log. Did Task 1.1 in the previous commit, and Task 1.2 in this commit.
 d0f30e8 (origin/main, origin/HEAD) refactored code to fix CheckStyle issues
 9dc910e Initial commit

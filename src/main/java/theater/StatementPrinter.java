@@ -8,11 +8,12 @@ import java.util.Map;
  * This class generates a statement for a given invoice of performances.
  */
 public class StatementPrinter {
-    private static Map<String, Play> plays;
+    private Map<String, Play> plays;
     private Invoice invoice;
 
-    public StatementPrinter(Invoice invoice) {
+    public StatementPrinter(Invoice invoice, Map<String, Play> plays) {
         this.invoice = invoice;
+        this.plays = plays;
     }
 
     public Invoice getInvoice() {
@@ -42,11 +43,7 @@ public class StatementPrinter {
             final int thisAmount = getAmount(performance);
 
             // add volume credits
-            volumeCredits += Math.max(performance.getAudience() - Constants.BASE_VOLUME_CREDIT_THRESHOLD, 0);
-            // add extra credit for every five comedy attendees
-            if ("comedy".equals(play.getType())) {
-                volumeCredits += performance.getAudience() / Constants.COMEDY_EXTRA_VOLUME_FACTOR;
-            }
+            volumeCredits += getVolumeCredits(performance, play);
 
             // print line for this order
             result.append(String.format("  %s: %s (%s seats)%n", play.getName(), frmt.format(thisAmount
@@ -58,11 +55,21 @@ public class StatementPrinter {
         return result.toString();
     }
 
-    private static Play getPlay(Performance performance) {
+    private static int getVolumeCredits(Performance performance, Play play) {
+        int result = 0;
+        result += Math.max(performance.getAudience() - Constants.BASE_VOLUME_CREDIT_THRESHOLD, 0);
+        // add extra credit for every five comedy attendees
+        if ("comedy".equals(play.getType())) {
+            result += performance.getAudience() / Constants.COMEDY_EXTRA_VOLUME_FACTOR;
+        }
+        return result;
+    }
+
+    private Play getPlay(Performance performance) {
         return plays.get(performance.getPlayID());
     }
 
-    private static int getAmount(Performance performance) {
+    private int getAmount(Performance performance) {
         int result;
         switch (getPlay(performance).getType()) {
             case "tragedy":
