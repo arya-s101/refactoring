@@ -1,7 +1,10 @@
-9403d6c (HEAD -> main) completed Task 2.3, and updated the log
+154ceeb (HEAD -> main, origin/main, origin/HEAD) already finished Task 2.4
+79d0163 already finished Task 1.2
+5ee948b completed Task 2.4, and updated the log Also fixed a Checkstyle error in the Performance class.
+9403d6c completed Task 2.3, and updated the log
 0348ba7 completed Task 2.2, and updated the log
 e4da034 fixed SonarLint errors
 03cb1eb updated the log, and finished Task 2.1
 61877ec updated the log. Did Task 1.1 in the previous commit, and Task 1.2 in this commit.
-d0f30e8 (origin/main, origin/HEAD) refactored code to fix CheckStyle issues
+d0f30e8 refactored code to fix CheckStyle issues
 9dc910e Initial commit
